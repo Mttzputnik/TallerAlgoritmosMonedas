@@ -73,8 +73,8 @@ function reconstruct(coins,P,M){
  return j===0?out:null;
 }
 function renderTable(target,matrix,coins,paths=false){
- let html='<table><thead><tr><th>i / dᵢ</th><th>—</th>'+matrix[0].map((_,j)=>'<th>'+j+'</th>').join('')+'</tr></thead><tbody>';
- for(let i=0;i<matrix.length;i++){html+='<tr><th>'+(i===0?'0':i+' / '+coins[i-1])+'</th><td>—</td>';
+ let html='<table><thead><tr><th>i</th><th>dᵢ</th>'+matrix[0].map((_,j)=>'<th>'+j+'</th>').join('')+'</tr></thead><tbody>';
+ for(let i=0;i<matrix.length;i++){html+='<tr><th>'+i+'</th><td>'+(i===0?'—':coins[i-1])+'</td>';
   for(let j=0;j<matrix[i].length;j++){const v=matrix[i][j],text=paths?(v||'—'):(v===INF?'∞':v);html+='<td class="'+(paths?'path':(i===matrix.length-1&&j===matrix[i].length-1?'opt':''))+'">'+text+'</td>';}
   html+='</tr>';}
  target.innerHTML=html+'</tbody></table>';
